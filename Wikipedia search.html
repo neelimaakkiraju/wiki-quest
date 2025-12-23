@@ -1,29 +1,77 @@
 <!DOCTYPE html>
 <html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Wiki Quest</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="Wikipedia search.css" />
+  </head>
 
-<head>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous" />
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
-</head>
-
-<body>
+  <body>
     <div class="main-container">
-        <div class="wiki-search-header text-center">
-            <img class="wiki-logo" src="https://d1tgh8fmlzexmh.cloudfront.net/ccbp-dynamic-webapps/wiki-logo-img.png" />
-            <br />
-            <input placeholder="Type a keyword and press Enter to search" type="search" class="search-input w-100" id="searchInput" />
-        </div>
-        <div class="d-none" id="spinner">
-            <div class="d-flex justify-content-center">
-                <div class="spinner-border" role="status">
-                    <span class="sr-only"></span>
-                </div>
+      <header class="wiki-search-header text-center">
+        <img
+          class="wiki-logo"
+          src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/63/Wikipedia-logo.png/320px-Wikipedia-logo.png"
+          alt="Wikipedia logo"
+        />
+        <p class="subtitle">
+          Discover summaries from Wikipedia with a clean, fast search.
+        </p>
+        <form id="searchForm" class="search-form">
+          <div class="input-group input-group-lg">
+            <input
+              placeholder="Search articles, people, places..."
+              type="search"
+              class="form-control search-input"
+              id="searchInput"
+              aria-label="Search Wikipedia"
+            />
+            <div class="input-group-append">
+              <button class="btn btn-primary" type="submit" id="searchButton">
+                Search
+              </button>
             </div>
-        </div>
-        <div class="search-results" id="searchResults"></div>
-    </div>
-</body>
+          </div>
+          <small class="text-muted d-block mt-2"
+            >Press Enter or tap Search. Results update as you type.</small
+          >
+        </form>
+      </header>
 
+      <div class="status-row d-flex align-items-center">
+        <div
+          class="spinner-border text-primary d-none"
+          role="status"
+          aria-live="polite"
+          id="spinner"
+        >
+          <span class="sr-only">Loading...</span>
+        </div>
+        <p id="statusText" class="status-text mb-0 ml-2">
+          Type to begin searching.
+        </p>
+        <button
+          id="clearButton"
+          class="btn btn-link btn-sm ml-auto text-decoration-none"
+        >
+          Clear
+        </button>
+      </div>
+
+      <section
+        class="search-results"
+        id="searchResults"
+        aria-live="polite"
+      ></section>
+    </div>
+
+    <script src="Wikipedia search.js"></script>
+  </body>
 </html>
